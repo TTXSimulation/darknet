@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>BlackCat // Leak Directory</title>
+  <style>
+    body {
+      background-color: #000;
+      color: #00ff00;
+      font-family: 'Courier New', monospace;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      min-height: 100vh;
+    }
+    .static {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      background: url('https://media.giphy.com/media/oEI9uBYSzLpBK/giphy.gif') repeat;
+      background-size: cover;
+      opacity: 0.02;
+      z-index: -1;
+    }
+    main {
+      flex: 1;
+      padding: 20px;
+      overflow-y: auto;
+    }
+    aside {
+      width: 300px;
+      background-color: #111;
+      border-left: 1px solid #003300;
+      display: flex;
+      flex-direction: column;
+    }
+    .chatbox {
+      flex: 1;
+      overflow-y: auto;
+      padding: 10px;
+      font-size: 0.9rem;
+      background-color: #111;
+      color: #ffffff;
+      border-radius: 8px;
+      box-shadow: 0px 0px 10px 2px #ff2d2d;
+      border: 1px solid #003300;
+    }
+    .chat-header {
+      background-color: #222;
+      padding: 15px;
+      text-align: center;
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #00ff00;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      box-shadow: 0px 0px 10px 2px #ff2d2d;
+      text-shadow: 0px 0px 10px #00ff00;
+    }
+    .chat-message {
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+    }
+    .chat-user {
+      color: #00ff00;
+      font-weight: bold;
+      margin-right: 8px;
+    }
+    .chat-text {
+      color: #ccc;
+    }
+    .chat-message .user-icon {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background-color: #003300;
+      margin-right: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 14px;
+    }
+    header {
+      text-align: center;
+      padding: 20px;
+      background: #000;
+      border-bottom: 3px solid #00ff00;
+    }
+    header h1 {
+      font-family: 'Courier New', monospace;
+      font-size: 2rem;
+      color: #00ff00;
+      text-shadow: 0px 0px 20px #00ff00;
+      letter-spacing: 2px;
+    }
+    .onion-url {
+      font-size: 0.8rem;
+      color: #999;
+      margin-top: 10px;
+    }
+    nav {
+      text-align: center;
+      margin: 15px;
+    }
+    nav a {
+      color: #00ff00;
+      text-decoration: none;
+      margin: 0 10px;
+      font-size: 1rem;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+    .forum, .admin-login, .payment-page {
+      max-width: 950px;
+      margin: 30px auto;
+      padding: 0 20px;
+      display: none;
+    }
+    .forum.active, .admin-login.active, .payment-page.active {
+      display: block;
+    }
+    .target {
+      background-color: #111;
+      border: 1px solid #003300;
+      margin-bottom: 25px;
+      padding: 20px;
+      border-radius: 5px;
+      position: relative;
+      box-shadow: 0 0 8px rgba(255, 0, 0, 0.5);
+    }
+    .medios {
+      background-color: #220000;
+      border: 1px solid #ff0000;
+    }
+    h2, h3 {
+      color: #00ff00;
+      font-family: 'Courier New', monospace;
+    }
+    p, label {
+      color: #cccccc;
+    }
+    .countdown {
+      color: #ffcc00;
+      margin: 10px 0;
+      font-size: 1rem;
+    }
+    .size {
+      margin-top: 10px;
+      color: #999;
+    }
+    .download {
+      margin-top: 20px;
+    }
+    .download a {
+      background-color: #003300;
+      color: #00ff00;
+      padding: 6px 12px;
+      text-decoration: none;
+      font-weight: bold;
+      border: 1px solid #00ff00;
+      border-radius: 4px;
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+    .download.ready a {
+      background-color: #004d00;
+      opacity: 1;
+      cursor: pointer;
+    }
+    .form-group {
+      margin-bottom: 20px;
+    }
+    input[type="text"], input[type="password"], textarea {
+      width: 100%;
+      background-color: #111;
+      border: 1px solid #00ff00;
+      color: #00ff00;
+      padding: 8px;
+      font-family: monospace;
+    }
+    button {
+      background-color: #004d00;
+      color: #00ff00;
+      border: 1px solid #00ff00;
+      padding: 8px 16px;
+      cursor: pointer;
+    }
+    .crypto-address {
+      background-color: #111;
+      padding: 10px;
+      border: 1px solid #003300;
+      word-break: break-all;
+      margin-bottom: 15px;
+    }
+    footer {
+      text-align: center;
+      margin: 50px 0 20px;
+      font-size: 0.75rem;
+      color: #555;
+    }
+    .hidden-graphic {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-image: url('https://i.imgur.com/QrXQQ7M.gif');
+      background-size: cover;
+      width: 150px;
+      height: 150px;
+      opacity: 0.1;
+      z-index: -1;
+    }
+  </style>
+</head>
+<body>
+
+<div class="static"></div>
+
+<main>
+  <header>
+    <h1>BlackCat Leak Network</h1>
+    <div class="onion-url">http://blackcatleakxyz.onion</div>
+  </header>
+
+  <nav>
+    <a href="#" onclick="showSection('forum')">Leaks</a> |
+    <a href="#" onclick="showSection('admin-login')">Admin Login</a> |
+    <a href="#" onclick="showSection('payment-page')">Payments</a>
+  </nav>
+
+  <div id="forum" class="forum active">
+    <div class="target medios" data-timer="259200">
+      <h2>MEDIOS AG</h2>
+      <p>50 GB of medical records, internal credentials, patient data</p>
+      <div class="countdown">Leak in: <span class="time"></span></div>
+      <div class="size">50 GB</div>
+      <div class="download">
+        <a title="Available after countdown">Download (locked)</a>
+      </div>
+    </div>
+
+    <div class="target" data-timer="0">
+      <h2>Orion Logistics</h2>
+      <p>Accounting reports, fleet tracking data</p>
+      <div class="countdown">DATA LEAK RELEASED</div>
+      <div class="size">18.7 GB</div>
+      <div class="download ready">
+        <a href="#">Download leaked data</a>
+      </div>
+    </div>
+  </div>
+
+  <div id="admin-login" class="admin-login">
+    <h2>Administrator Access</h2>
+    <p>Restricted area. Unauthorized access is forbidden and logged.</p>
+    <div class="form-group">
+      <label>Username:</label>
+      <input type="text" placeholder="admin" disabled>
+    </div>
+    <div class="form-group">
+      <label>Password:</label>
+      <input type="password" placeholder="********">
+    </div>
+    <div class="form-group">
+      <label>PGP Private Key (Paste Encrypted):</label>
+      <textarea rows="6" placeholder="-----BEGIN PGP MESSAGE-----"></textarea>
+    </div>
+    <button>Login</button>
+  </div>
+
+  <div id="payment-page" class="payment-page">
+    <h2>Ransom Payments</h2>
+    <p>All payments are verified manually. Contact after sending.</p>
+
+    <h3>Bitcoin (BTC) Address:</h3>
+    <div class="crypto-address">1FzWLkYZ9Zx6RGVxxmvrKXZcJY4XJZpPiD</div>
+
+    <h3>Monero (XMR) Address:</h3>
+    <div class="crypto-address">44AFFq5kSiGBoZ...VE3yN7ADfD7gD8FDC5nV4</div>
+
+    <p>Status: <b style="color:#ffcc00">Waiting for Payment Confirmation...</b></p>
+  </div>
+
+  <footer>
+    © BlackCat Leak Network – We own your data. All leaks are real. Tick-tock.
+  </footer>
+</main>
+
+<aside>
+  <div class="chatbox" id="chatbox">
+    <div class="chat-header">Anonymous Chat - BlackCat Leak Network</div>
+  </div>
+</aside>
+
+<div class="hidden-graphic"></div>
+
+<script>
+// User icons for each user
+const userIcons = {
+  "anon132": "https://randomuser.me/api/portraits/men/1.jpg", // Example image link
+  "rootAccess": "https://randomuser.me/api/portraits/men/2.jpg", // Another example image link
+  "darknet213": "https://randomuser.me/api/portraits/men/3.jpg",
+  "meduza": "https://randomuser.me/api/portraits/men/4.jpg",
+  "zeroCool": "https://randomuser.me/api/portraits/men/5.jpg",
+  "an0nym0us": "https://randomuser.me/api/portraits/men/6.jpg",
+  "ghost420": "https://randomuser.me/api/portraits/men/7.jpg",
+  // Add more users as needed
+};
+
+const chatbox = document.getElementById('chatbox');
+const fakeMessages = [
+  { user: "anon132", text: "anyone seen leak for Medios?" },
+  { user: "rootAccess", text: "waiting for unlock countdown..." },
+  { user: "darknet213", text: "payment address still working?" },
+  { user: "meduza", text: "voltrix industries leak is 🔥" },
+  { user: "zeroCool", text: "need hypernova reactor files" },
+  { user: "an0nym0us", text: "trust blackcat. all real." },
+  { user: "ghost420", text: "waiting for oceanix freight unlock..." }
+];
+
+function addFakeMessage() {
+  if (fakeMessages.length === 0) return;
+  const msg = fakeMessages.shift();
+  const userIconUrl = userIcons[msg.user] || userIcons["anon132"];  // Default icon if user is not found
+
+  const div = document.createElement('div');
+  div.className = 'chat-message';
+  div.innerHTML = `
+    <div class="user-icon">
+      <img src="${userIconUrl}" alt="${msg.user}" width="30" height="30" style="border-radius: 50%;" />
+    </div>
+    <span class="chat-user">${msg.user}:</span> <span class="chat-text">${msg.text}</span>
+  `;
+  chatbox.appendChild(div);
+  chatbox.scrollTop = chatbox.scrollHeight;
+}
+
+setInterval(addFakeMessage, 3500);
+
+function showSection(section) {
+  document.querySelectorAll('.forum, .admin-login, .payment-page').forEach(s => s.classList.remove('active'));
+  document.getElementById(section).classList.add('active');
+}
+</script>
+
+</body>
+</html>
